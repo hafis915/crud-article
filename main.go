@@ -5,6 +5,7 @@ import (
 	"articles/model"
 	"log"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,6 +18,7 @@ func main() {
 	db.DB()
 
 	router := gin.Default()
+	router.Use(cors.Default())
 
 	router.GET("/articles/:limit/:offset", article.GetArticles)
 	router.GET("/article/:id", article.GetArticle)
